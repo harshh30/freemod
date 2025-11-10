@@ -1,24 +1,30 @@
-async function load(){
-  const res = await fetch('apps.json');
-  const apps = await res.json();
-  const grid = document.getElementById('grid');
-  const q = document.getElementById('q');
+fetch('apps.json')
+  .then(res => res.json())
+  .then(apps => {
+    const container = document.getElementById('app-container');
+    const search = document.getElementById('search');
 
-  function render(list){
-    grid.innerHTML = list.map(a => `
-      <div class="card">
-        <img src="${a.icon}" alt="${a.title}" />
-        <h3>${a.title}</h3>
-        <p>${a.short}</p>
-        <a href="${a.link}" target="_blank" class="btn">Download / Visit</a>
-      </div>
-    `).join('');
-  }
+    function render(list) {
+      container.innerHTML = "";
+      list.forEach(app => {
+        const card = document.createElement('div');
+        card.className = 'app-card';
+        card.innerHTML = `
+          <img src="${app.icon}" alt="${app.title}">
+          <h3>${app.title}</h3>
+          <p>${app.short}</p>
+          <small>${app.category}</small><br>
+          <a href="${app.link}" target="_blank" style="color:#00e676;">Download</a>
+        `;
+        container.appendChild(card);
+      });
+    }
 
-  render(apps);
-  q.addEventListener('input', ()=> {
-    const v = q.value.toLowerCase();
-    render(apps.filter(a=> (a.title+a.short+a.desc+a.category).toLowerCase().includes(v)));
+    render(apps);
+
+    search.addEventListener('input', e => {
+      const value = e.target.value.toLowerCase();
+      const filtered = apps.filter(a => a.title.toLowerCase().includes(value));
+      render(filtered);
+    });
   });
-}
-load();
