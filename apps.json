@@ -1,0 +1,26 @@
+[
+  {
+    "id": "capcut-pro",
+    "title": "CapCut Templates Pack",
+    "short": "No watermark templates for Reels",
+    "desc": "Free CapCut templates (legal content).",
+    "category": "Video Editor",
+    "version": "2025.10",
+    "size": "120 MB",
+    "icon": "assets/img/capcut.png",
+    "link": "https://www.capcut.com/",
+    "legal": "official"
+  },
+  {
+    "id": "gta-guide",
+    "title": "GTA Graphics Guide",
+    "short": "Best settings for low-end PCs",
+    "desc": "Learn how to configure GTA graphics safely.",
+    "category": "Games",
+    "version": "1.0",
+    "size": "-",
+    "icon": "assets/img/gta.png",
+    "link": "https://rockstargames.com/",
+    "legal": "guide"
+  }
+]
